@@ -27,7 +27,7 @@ const Home = ({ logout }) => {
   const Questions = async () => {
     try {
       const questionRes = await axios.get(
-        "http://localhost:4000/api/questions"
+        `${process.env.REACT_APP_base_url}/api/questions`
       );
       const questionsWithTime = questionRes.data.data.map((question) => ({
         ...question,
@@ -56,7 +56,7 @@ const Home = ({ logout }) => {
       try {
         const timestamp = new Date().toISOString(); // Generate a valid timestamp
         // Your API call to submit a new question
-        await axios.post("http://localhost:4000/api/questions", {
+        await axios.post(`${process.env.REACT_APP_base_url}/api/questions`, {
           question,
           timestamp,
         });
